@@ -6,6 +6,7 @@ import {MOBILE_QUERY} from "../CommonUtils";
 
 import {Section, Wrapper} from "../components/Common/Section";
 import Footer from "../components/Footer";
+import MenuBar from "../components/MenuBar";
 
 
 const BackgroundComp = styled.div<{ src: string }>`
@@ -81,7 +82,27 @@ const Contact = styled.div`
   }
 `
 
-const MenuBar = styled.div`
+const GoToProject = styled.div`
+  font-size:28px;
+  border:1px solid #333;
+  padding: 20px 80px;
+  color:#333;
+  cursor:pointer;
+
+  &:hover {
+    color:white;
+    background:#333;
+  }
+`
+
+const GoToProjectWhite = styled(GoToProject)`
+  border:1px solid white;
+  color:white;
+
+  &:hover {
+    color:#333;
+    background:white;
+  }
 `
 
 const HomePage = (props: any) => {
@@ -91,29 +112,52 @@ const HomePage = (props: any) => {
     });
 
     return (<Wrapper>
+      <MenuBar />
       <Section isMobile={isMobileVal} isFull={true}>
           <BackgroundVideo>
-              <Dim />
-              <video autoPlay muted loop playsInline>
-                  <source src={isMobileVal ? "/img/main/main_mobile.mp4" : "/img/main/main.mp4"} type="video/mp4"/>
-              </video>
+            <Dim />
+            <video autoPlay muted loop playsInline>
+              <source src={isMobileVal ? "/img/main/main_mobile.mp4" : "/img/main/main.mp4"} type="video/mp4"/>
+            </video>
           </BackgroundVideo>
           <Container verticalAlign="flex-end">
-            <MainTitle>davin's portfolio</MainTitle>
+            {/* <MainTitle>davin's portfolio</MainTitle> */}
           </Container>
       </Section>
       <Section isMobile={isMobileVal} isFull={true}>
           <BackgroundComp src="/img/main/magazine.jpg" />
+          <Container>
+            <Link to="/magazine">
+              <GoToProject>
+                Magazine
+              </GoToProject>
+            </Link>
+          </Container>
       </Section>
       <Section isMobile={isMobileVal} isFull={true}>
           <BackgroundComp src="/img/main/brand.jpg" />
+          <Container>
+            <Link to="/brand">
+              <GoToProjectWhite>
+                Brand
+              </GoToProjectWhite>
+            </Link>
+          </Container>
       </Section>
       <Section isMobile={isMobileVal} isFull={true}>
           <BackgroundVideo>
-              <video autoPlay muted loop playsInline>
-                  <source src="/img/main/film.mp4" type="video/mp4"/>
-              </video>
+            <Dim />
+            <video autoPlay muted loop playsInline>
+              <source src="/img/main/film.mp4" type="video/mp4"/>
+            </video>
           </BackgroundVideo>
+          <Container>
+            <Link to="/film">
+              <GoToProjectWhite>
+                Film
+              </GoToProjectWhite>
+            </Link>
+          </Container>
       </Section>
       <Section isMobile={isMobileVal} isFull={false}>
         <Contact>
