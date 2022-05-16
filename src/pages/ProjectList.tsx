@@ -23,7 +23,7 @@ const TitleContainer = styled.div<{image:string}>`
     background-position:center;
 `
 
-const MainPlace = styled.div`
+const MainPlace = styled.div<{isMobile:boolean}>`
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -36,18 +36,20 @@ const MainPlace = styled.div`
         text-align:left;
         margin-bottom:200px;
 
+        padding:${p => p.isMobile ? "0 5px" : "0"};
+
         >.title {
-            margin-top:60px;
+            margin-top:${p => p.isMobile ? "20px" : "60px"};
             font-size:40px;
             font-weight:bold;
         }
 
         >.desc {
-            margin-top:20px;
+            margin-top:${p => p.isMobile ? "10px" : "20px"};
         }
 
         >.back {
-            margin-top: 40px;
+            margin-top:40px;
             cursor:pointer;
             color:black;
 
@@ -58,27 +60,27 @@ const MainPlace = styled.div`
     }
 `
 
-const ImgList = styled.div`
+const ImgList = styled.div<{isMobile:boolean}>`
     display:flex;
     flex-direction:column;
-    margin-top:100px;
+    margin-top:${p => p.isMobile ? "60px" : "100px"};
 `
 
-const ImgColumn = styled.div`
+const ImgColumn = styled.div<{isMobile:boolean}>`
     display:flex;
     flex-direction:row;
-    padding: 10px 0;
+    padding:${p => p.isMobile ? "5px 0" : "10px 0"};
 `
 
-const ImgRow = styled.div<{horizontal:any, image:string}>`
+const ImgRow = styled.div<{horizontal:any, image:string, isMobile:boolean}>`
     display:flex;
     flex:${p => p.horizontal};
     background: url("${p => p.image}");
     background-size:cover;
     background-position:center;
 
-    height:400px;
-    margin:0 10px;
+    height:${p => p.isMobile ? "200px" : "400px"};
+    margin:${p => p.isMobile ? "0 5px" : "0 10px"};
     cursor:pointer;
 
     >div {
@@ -230,16 +232,17 @@ const ProjectList = (props: any) => {
 
         <TitleContainer image={(!!projectData && !!projectId) ? `/img${location.pathname}/${projectData[1]}` : THUMBNAIL_LIST[pageType]}></TitleContainer>
 
-        <MainPlace>
+        <MainPlace isMobile={isMobileVal}>
             { (!!projectData && !!projectId) ? 
                 <div className="container">
                     <div className="back" onClick={() => navigate(-1)}>&lt; 뒤로가기</div>
                     <div className="title">{title}</div>
-                    <ImgList>
+                    <ImgList isMobile={isMobileVal}>
                         {IMAGE_DETAIL_LIST[pageType][projectId].map( (v:any, k:any) => {
-                            return <ImgColumn key={k}>
+                            return <ImgColumn isMobile={isMobileVal} key={k}>
                                 {v.map( (e:any, kk:any) => {
                                     return <ImgRow 
+                                        isMobile={isMobileVal}
                                         key={kk}
                                         horizontal={e[1]}
                                         image={`/img${location.pathname}/${e[0]}`}
@@ -253,11 +256,12 @@ const ProjectList = (props: any) => {
                 <div className="container">
                     <div className="title">{title}</div>
                     <div className="desc">{desc}</div>
-                    <ImgList>
+                    <ImgList isMobile={isMobileVal}>
                         {IMAGE_LIST[pageType].map( (e, k) => {
-                            return <ImgColumn key={k}>
+                            return <ImgColumn isMobile={isMobileVal} key={k}>
                                 {e.map( (v, kk) => {
-                                    return <ImgRow 
+                                    return <ImgRow
+                                        isMobile={isMobileVal}
                                         key={v[0]}
                                         horizontal={v[3]} 
                                         onClick={() => handleProject(v[0])}
@@ -554,7 +558,7 @@ const IMAGE_LIST = [
         ],
         [
             [5, "O_200813D_6919.jpg", "올리브 NM", 1],
-            [6, "O_200615D_2339.jpeg", "올리브 남영동 초원", 2]
+            [6, "O_200615D_2339.jpeg", "올리브 남영동 초원", 1]
         ],
         [
             [7, "O_200713D_3805.jpg", "올리브 네기규동", 2],

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import {useMediaQuery} from "react-responsive";
 import { Link } from "react-router-dom";
+import {MOBILE_QUERY} from "../CommonUtils";
 
-const Wrapper = styled.div<{theme:string}>`
+const Wrapper = styled.div<{theme:string, isMobile:boolean}>`
   position:fixed;
   top:0;
   left:0;
@@ -23,9 +24,9 @@ const Wrapper = styled.div<{theme:string}>`
   >.container {
     position:relative;
     display:flex;
-    flex-direction:rows;
+    flex-direction:${p => p.isMobile ? "column" : "rows"};
     align-items:center;
-    padding:30px 40px;
+    ${p => p.isMobile ? "padding:20px 10px;" : "padding:30px 40px;"};
 
     .title {
       font-size: 24px;
@@ -38,8 +39,10 @@ const Wrapper = styled.div<{theme:string}>`
 
       display:flex;
       flex-direction:rows;
-      justify-content:flex-end;
+      justify-content:${p => p.isMobile ? "center" : "flex-end"};;
       align-items:center;
+
+      ${p => p.isMobile ? "margin-top:10px;" : ""};
 
       >a {
         margin-right:30px;
@@ -52,7 +55,7 @@ const Wrapper = styled.div<{theme:string}>`
           color: ${p => p.theme == "black" ? "black" : "white"};
           cursor:pointer;
           font-weight:500;
-          font-size:20px;
+          font-size:${p => p.isMobile ? "16px" : "20px"};
 
           &:hover {
             color: ${p => p.theme == "black" ? "white" : "black"};
@@ -66,10 +69,10 @@ const Wrapper = styled.div<{theme:string}>`
 const MenuBar = (props:any) => {
   
   const isMobileVal = useMediaQuery({
-    query: "(max-width:767px) "
+    query: MOBILE_QUERY
   });
   
-  return (<Wrapper theme={props.theme} className={isMobileVal ? "m" : ""}>
+  return (<Wrapper theme={props.theme} isMobile={isMobileVal}>
     <div className="dim"></div>
     <div className="container">
       <Link to="/"><div className="title">davin's gallery</div></Link>
