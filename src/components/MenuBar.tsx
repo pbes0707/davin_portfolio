@@ -75,7 +75,7 @@ const MenuBar = (props:any) => {
   return (<Wrapper theme={props.theme} isMobile={isMobileVal}>
     <div className="dim"></div>
     <div className="container">
-      <Link to="/"><div className="title">davin's gallery</div></Link>
+      <Link to="/"><div className="title">@davinworld</div></Link>
       <div className="menus">
         <Link to="/magazine"><div className="menu">Magazine</div></Link>
         <Link to="/brand"><div className="menu">Brand</div></Link>

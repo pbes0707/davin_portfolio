@@ -121,7 +121,7 @@ const HomePage = (props: any) => {
             </video>
           </BackgroundVideo>
           <Container verticalAlign="center">
-            <MainTitle>Welcome to davin's gallery</MainTitle>
+            <MainTitle>Welcome to davin's World!</MainTitle>
           </Container>
       </Section>
       <Section isMobile={isMobileVal} isFull={true}>
