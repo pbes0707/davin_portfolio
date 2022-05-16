@@ -14,7 +14,6 @@ import Footer from "../components/Footer";
 import MenuBar from "../components/MenuBar";
 import { useSnackbar } from "notistack";
 import { IMAGE_DETAIL_LIST, IMAGE_LIST } from "./dataList";
-import Vimeo from '@u-wave/react-vimeo';
 
 const TitleContainer = styled.div<{image:string}>`
 
