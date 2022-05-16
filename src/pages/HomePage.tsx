@@ -79,6 +79,12 @@ const Contact = styled.div`
         text-decoration:underline;
       }
     }
+
+    >img {
+      margin-top:20px;
+      width:50px;
+      cursor:pointer;
+    }
   }
 `
 
@@ -165,7 +171,9 @@ const HomePage = (props: any) => {
           <div className="desc">
             최고의 포토그래퍼 다빈이에게 컨택해주세요.<br/>
             <br/>
-            <a href="mailto:photographer.davin@gmail.com">photographer.davin@gmail.com</a>
+            <a href="mailto:photographer.davin@gmail.com">photographer.davin@gmail.com</a><br/>
+            <br/>
+            <img onClick={() => window.open("https://instagram.com/davinworld", "_blank")} src="/img/logo_instagram.png"/>
           </div>
         </Contact>
       </Section>
