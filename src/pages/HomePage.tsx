@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {useMediaQuery} from "react-responsive";
-import {MOBILE_QUERY} from "../CommonUtils";
+import {CDN_URL, MOBILE_QUERY} from "../CommonUtils";
 
 import {Section, Wrapper} from "../components/Common/Section";
 import Footer from "../components/Footer";
@@ -125,7 +125,7 @@ const HomePage = (props: any) => {
           <BackgroundVideo>
             <Dim />
             <video autoPlay muted loop playsInline>
-              <source src={isMobileVal ? "/img/main/main_mobile.mp4" : "/img/main/main.mp4"} type="video/mp4"/>
+              <source src={isMobileVal ? `${CDN_URL}/img/main/main_mobile.mp4` : `${CDN_URL}/img/main/main.mp4`} type="video/mp4"/>
             </video>
           </BackgroundVideo>
           <Container verticalAlign="center">
@@ -133,7 +133,7 @@ const HomePage = (props: any) => {
           </Container>
       </Section>
       <Section isMobile={isMobileVal} isFull={true}>
-          <BackgroundComp src="/img/main/magazine.jpg" />
+          <BackgroundComp src={`${CDN_URL}/img/main/magazine.jpg`} />
           <Container>
             <Link to="/magazine">
               <GoToProject className="wow fadeInUp">
@@ -143,7 +143,7 @@ const HomePage = (props: any) => {
           </Container>
       </Section>
       <Section isMobile={isMobileVal} isFull={true}>
-          <BackgroundComp src="/img/main/brand.jpg" />
+          <BackgroundComp src={`${CDN_URL}/img/main/brand.jpg`} />
           <Container>
             <Link to="/brand">
               <GoToProjectWhite className="wow fadeInUp">
@@ -156,7 +156,7 @@ const HomePage = (props: any) => {
           <BackgroundVideo>
             <Dim />
             <video autoPlay muted loop playsInline>
-              <source src="/img/main/film.mp4" type="video/mp4"/>
+              <source src={`${CDN_URL}/img/main/film.mp4`} type="video/mp4"/>
             </video>
           </BackgroundVideo>
           <Container>
