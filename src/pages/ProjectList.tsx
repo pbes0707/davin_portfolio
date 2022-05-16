@@ -45,6 +45,12 @@ const MainPlace = styled.div<{isMobile:boolean}>`
             font-weight:bold;
         }
 
+        >.project-title {
+            margin-top:${p => p.isMobile ? "20px" : "60px"};
+            font-size:${p => p.isMobile ? "24px" : "40px"};
+            font-weight:bold;
+        }
+
         >.desc {
             margin-top:${p => p.isMobile ? "10px" : "20px"};
         }
@@ -237,7 +243,7 @@ const ProjectList = (props: any) => {
             { (!!projectData && !!projectId) ? 
                 <div className="container">
                     <div className="back" onClick={() => navigate(-1)}>&lt; 뒤로가기</div>
-                    <div className="title">{title}</div>
+                    <div className="project-title">{title}</div>
                     <ImgList isMobile={isMobileVal}>
                         {IMAGE_DETAIL_LIST[pageType][projectId].map( (v:any, k:any) => {
                             return <ImgColumn isMobile={isMobileVal} key={k}>
