@@ -113,6 +113,8 @@ const ImgRow = styled.div<{horizontal:any, image:string, isMobile:boolean}>`
             position:relative;
             z-index:2;
             font-size:20px;
+            padding:0 10px;
+            text-align:center;
         }
     }
 
