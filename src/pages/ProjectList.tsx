@@ -229,11 +229,11 @@ const ProjectList = (props: any) => {
                     break;
                 case 1:
                     setTitle("BRAND")
-                    setDesc("Brand Work")
+                    setDesc("Food And Beverage Brand Work")
                     break;
                 case 2:
                     setTitle("FILM")
-                    setDesc("film film")
+                    setDesc("Food And Beverage Film Work")
                     break;
             }
         }
