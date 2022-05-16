@@ -14,6 +14,7 @@ import Footer from "../components/Footer";
 import MenuBar from "../components/MenuBar";
 import { useSnackbar } from "notistack";
 import { IMAGE_DETAIL_LIST, IMAGE_LIST } from "./dataList";
+import Vimeo from '@u-wave/react-vimeo';
 
 const TitleContainer = styled.div<{image:string}>`
 
@@ -160,9 +161,54 @@ const SelectImage = styled.div`
     }
 `
 
+const VideoContainer = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+`
+
+const VideoList = styled.div<{isMobile:boolean}>`
+    display:flex;
+    flex-direction:column;
+
+    margin-top:${p => p.isMobile ? "60px" : "100px"};
+    width:100%;
+    max-width:1000px;
+`
+
+const VideoRow = styled.div<{isMobile:boolean}>`
+    margin-bottom:${p => p.isMobile ? "60px" : "100px"};
+
+    >.subject {
+        margin-bottom:10px;
+        font-size:24px;
+        font-weight:bold;
+        padding-bottom:10px;
+        border-bottom:1px solid black;
+    }
+    
+    >.vimeo {
+        position: relative;
+        padding-bottom: 56.25%; /* 16/9 ratio */
+        padding-top: 30px; /* IE6 workaround*/
+        height: 0;
+        overflow: hidden;
+        margin: 0;
+
+        iframe, object, embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+`
+
+
 const findProject = (pageType:number, projectId:number) => {
     for (let v of IMAGE_LIST[pageType]) {
-        let data = v.find(ee => ee[0] == projectId);
+        let data = v.find( (e:any) => e[0] == projectId);
         if(!!data) return data;
     }
     return null;
@@ -270,10 +316,10 @@ const ProjectList = (props: any) => {
                 <div className="container">
                     <div className="title">{title}</div>
                     <div className="desc">{desc}</div>
-                    <ImgList isMobile={isMobileVal}>
-                        {IMAGE_LIST[pageType].map( (e, k) => {
+                    {pageType != 2 ? <ImgList isMobile={isMobileVal}>
+                        {IMAGE_LIST[pageType].map( (e:any, k:any) => {
                             return <ImgColumn isMobile={isMobileVal} key={k}>
-                                {e.map( (v, kk) => {
+                                {e.map( (v:any, kk:any) => {
                                     return <ImgRow
                                         className="wow fadeInUp"
                                         data-wow-delay={`${0.1 * kk}s`}
@@ -290,7 +336,23 @@ const ProjectList = (props: any) => {
                                 })}
                             </ImgColumn>
                         })}
-                    </ImgList>
+                    </ImgList> :
+                    <VideoContainer>
+                        <VideoList isMobile={isMobileVal}>
+                            {IMAGE_LIST[pageType].map( (e:any, k:any) => {
+                                let v = e[0];
+                                return <VideoRow isMobile={isMobileVal}>
+                                    <div className="subject">{v[2]}</div>
+                                    <div className="vimeo">
+                                        <iframe src={`https://player.vimeo.com/video/${v[1]}`} 
+                                            frameBorder="0" 
+                                            allow="autoplay; fullscreen; picture-in-picture" allowFullScreen={false}></iframe>
+                                    </div>
+                                </VideoRow>
+                            })}
+                        </VideoList>
+                    </VideoContainer>
+                    }
                 </div>}
         </MainPlace>
         
