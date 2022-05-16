@@ -25,6 +25,7 @@ const BackgroundVideo = styled.div`
   position:absolute;
   top:0;
   left:0;
+  width: 100%;
 
   >video {
     width: 100%;
@@ -54,9 +55,8 @@ const Container = styled.div<{verticalAlign?:string}>`
 `
 
 const MainTitle = styled.div`
-  font-size: 24px;
+  font-size: 32px;
   color:white;
-  margin-bottom:60px;
 `
 
 const Contact = styled.div`
@@ -112,7 +112,7 @@ const HomePage = (props: any) => {
     });
 
     return (<Wrapper>
-      <MenuBar />
+      <MenuBar theme={"white"}/>
       <Section isMobile={isMobileVal} isFull={true}>
           <BackgroundVideo>
             <Dim />
@@ -120,8 +120,8 @@ const HomePage = (props: any) => {
               <source src={isMobileVal ? "/img/main/main_mobile.mp4" : "/img/main/main.mp4"} type="video/mp4"/>
             </video>
           </BackgroundVideo>
-          <Container verticalAlign="flex-end">
-            {/* <MainTitle>davin's portfolio</MainTitle> */}
+          <Container verticalAlign="center">
+            <MainTitle>Welcome to davin's gallery</MainTitle>
           </Container>
       </Section>
       <Section isMobile={isMobileVal} isFull={true}>
