@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import styled from "styled-components";
 import {useMediaQuery} from "react-responsive";
-import {MOBILE_QUERY} from "../CommonUtils";
+import {CDN_URL, MOBILE_QUERY} from "../CommonUtils";
 
 import {Section, Wrapper} from "../components/Common/Section";
 import Footer from "../components/Footer";
@@ -16,7 +16,6 @@ import { useSnackbar } from "notistack";
 import { IMAGE_DETAIL_LIST, IMAGE_LIST } from "./dataList";
 
 const TitleContainer = styled.div<{image:string}>`
-
     height:400px;
     width:100%;
     background: url("${p => p.image}");
@@ -287,7 +286,7 @@ const ProjectList = (props: any) => {
     return (<Wrapper>
         <MenuBar theme={"white"}/>
 
-        <TitleContainer image={(!!projectData && !!projectId) ? `/img${location.pathname}/${projectData[1]}` : THUMBNAIL_LIST[pageType]}></TitleContainer>
+        <TitleContainer image={(!!projectData && !!projectId) ? `${CDN_URL}/img${location.pathname}/${projectData[1]}` : `${CDN_URL}${THUMBNAIL_LIST[pageType]}`}></TitleContainer>
 
         <MainPlace isMobile={isMobileVal}>
             { (!!projectData && !!projectId) ? 
@@ -304,8 +303,8 @@ const ProjectList = (props: any) => {
                                         isMobile={isMobileVal}
                                         key={kk}
                                         horizontal={e[1]}
-                                        image={`/img${location.pathname}/${e[0]}`}
-                                        onClick={() => handleSelectImage(`/img${location.pathname}/${e[0]}`)}
+                                        image={`${CDN_URL}/img${location.pathname}/${e[0]}`}
+                                        onClick={() => handleSelectImage(`${CDN_URL}/img${location.pathname}/${e[0]}`)}
                                     ></ImgRow>
                                 })}
                             </ImgColumn>
@@ -326,7 +325,7 @@ const ProjectList = (props: any) => {
                                         key={v[0]}
                                         horizontal={v[3]} 
                                         onClick={() => handleProject(v[0])}
-                                        image={`/img${location.pathname}/${v[0]}/${v[1]}`}>
+                                        image={`${CDN_URL}/img${location.pathname}/${v[0]}/${v[1]}`}>
                                         <div>
                                             <div className="dim"></div>
                                             <div className="title">{v[2]}</div>
