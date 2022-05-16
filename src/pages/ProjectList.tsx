@@ -183,18 +183,10 @@ const ProjectList = (props: any) => {
     const [projectData, setProjectData] = useState<any>(null);
     const [title, setTitle] = useState<string>("");
     const [desc, setDesc] = useState<string>("");
-
-    let pageType = 0;
-    if (location.pathname.startsWith("/film")) {
-        pageType = 2;
-    } else if (location.pathname.startsWith("/brand")) {
-        pageType = 1;
-    } else {
-        pageType = 0;
-    }
+    const [pageType, setPageType] = useState<number>(0);
 
 
-    const handleProject = useCallback((projectId:any) => {
+    const handleProject = (projectId:any) => {
         switch(pageType) {
             case 0:
                 return navigate(`/magazine/${projectId}`, {});
@@ -203,13 +195,22 @@ const ProjectList = (props: any) => {
             case 2:
                 return navigate(`/film/${projectId}`, {});
         }
-    }, [])
+    }
 
     const handleSelectImage = (src:string|null) => {
         setSelectImage(src);
     }
     
     useEffect(() => {
+
+        if (location.pathname.startsWith("/film")) {
+            setPageType(2);
+        } else if (location.pathname.startsWith("/brand")) {
+            setPageType(1);
+        } else {
+            setPageType(0);
+        }
+
         if (!!projectId) {
             let d = findProject(pageType, Number(projectId))
             setProjectData(d);
