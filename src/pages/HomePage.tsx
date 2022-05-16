@@ -134,7 +134,7 @@ const HomePage = (props: any) => {
           <BackgroundComp src="/img/main/magazine.jpg" />
           <Container>
             <Link to="/magazine">
-              <GoToProject>
+              <GoToProject className="wow fadeInUp">
                 Magazine
               </GoToProject>
             </Link>
@@ -144,7 +144,7 @@ const HomePage = (props: any) => {
           <BackgroundComp src="/img/main/brand.jpg" />
           <Container>
             <Link to="/brand">
-              <GoToProjectWhite>
+              <GoToProjectWhite className="wow fadeInUp">
                 Brand
               </GoToProjectWhite>
             </Link>
@@ -159,7 +159,7 @@ const HomePage = (props: any) => {
           </BackgroundVideo>
           <Container>
             <Link to="/film">
-              <GoToProjectWhite>
+              <GoToProjectWhite className="wow fadeInUp">
                 Film
               </GoToProjectWhite>
             </Link>
@@ -167,8 +167,8 @@ const HomePage = (props: any) => {
       </Section>
       <Section isMobile={isMobileVal} isFull={false}>
         <Contact>
-          <div className="title">Contact</div>
-          <div className="desc">
+          <div className="title wow fadeInUp">Contact</div>
+          <div className="desc wow fadeInUp" data-wow-delay="0.5s">
             최고의 포토그래퍼 다빈이에게 컨택해주세요.<br/>
             <br/>
             <a href="mailto:photographer.davin@gmail.com">photographer.davin@gmail.com</a><br/>

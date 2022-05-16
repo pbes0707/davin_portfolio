@@ -253,6 +253,8 @@ const ProjectList = (props: any) => {
                             return <ImgColumn isMobile={isMobileVal} key={k}>
                                 {v.map( (e:any, kk:any) => {
                                     return <ImgRow 
+                                        className="wow fadeInUp"
+                                        data-wow-delay={`${0.1 * kk}s`}
                                         isMobile={isMobileVal}
                                         key={kk}
                                         horizontal={e[1]}
@@ -261,7 +263,7 @@ const ProjectList = (props: any) => {
                                     ></ImgRow>
                                 })}
                             </ImgColumn>
-                        })}
+                    })}
                     </ImgList>
                 </div> : 
                 <div className="container">
@@ -272,6 +274,8 @@ const ProjectList = (props: any) => {
                             return <ImgColumn isMobile={isMobileVal} key={k}>
                                 {e.map( (v, kk) => {
                                     return <ImgRow
+                                        className="wow fadeInUp"
+                                        data-wow-delay={`${0.1 * kk}s`}
                                         isMobile={isMobileVal}
                                         key={v[0]}
                                         horizontal={v[3]} 
