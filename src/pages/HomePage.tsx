@@ -74,6 +74,8 @@ const Contact = styled.div`
 
     >a {
       color:black;
+      font-size:18px;
+      font-weight:bold;
 
       &:hover {
         text-decoration:underline;
@@ -169,7 +171,7 @@ const HomePage = (props: any) => {
         <Contact>
           <div className="title wow fadeInUp">Contact</div>
           <div className="desc wow fadeInUp" data-wow-delay="0.5s">
-            최고의 포토그래퍼 다빈이에게 컨택해주세요.<br/>
+            please contact me via<br/>
             <br/>
             <a href="mailto:photographer.davin@gmail.com">photographer.davin@gmail.com</a><br/>
             <br/>
